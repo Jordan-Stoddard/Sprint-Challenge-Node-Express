@@ -5,6 +5,8 @@ const projectModel = require('../data/helpers/projectModel.js')
 
 
 // End points
+
+// Get all projects
 route.get('/', (req, res) => {
     projectModel.get()
     .then(projects => {
@@ -15,6 +17,7 @@ route.get('/', (req, res) => {
     })
 })
 
+// Get specified project by params ID
 route.get('/:id', (req, res) => {
     const {id} = req.params
     console.log(req.body)
@@ -27,6 +30,7 @@ route.get('/:id', (req, res) => {
     })
 })
 
+// Get actions associated with project.
 route.get('/:id/actions', (req, res) => {
     projectModel.getProjectActions(req.params.id)
     .then(actions => {
@@ -37,6 +41,7 @@ route.get('/:id/actions', (req, res) => {
     })
 })
 
+// Create a new project.
 route.post('/', (req, res) => {
     const {name, description} = req.body
     if (!name || !description) {
@@ -51,6 +56,7 @@ route.post('/', (req, res) => {
     })
 })
 
+// Delete existing project by specified params id
 route.delete('/:id', (req, res) => {
     const {id} = req.params
     projectModel.remove(id)
@@ -65,6 +71,7 @@ route.delete('/:id', (req, res) => {
     })
 })
 
+// Update specified project by params id.
 route.put('/:id', (req, res) => {
     const {id} = req.params
     const {name, description} = req.body
