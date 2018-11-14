@@ -18,10 +18,19 @@ route.get('/', (req, res) => {
 // Get specified project by params ID
 route.get('/:id', (req, res) => {
     const {id} = req.params
-    console.log(req.body)
-    actionModel.get(id)
-    .then(action => {
-        res.status(200).json(action)
+    actionModel.get()
+    .then(actions => { 
+        const trueAction = actions.filter(action => {
+            return action.id == id
+         })
+         console.log(trueAction)
+        if (trueAction.length == 0) {
+            console.log('if launched')
+            return res.status(404).json({error: 'Action with specified ID does not exist.'})
+        } else {
+            console.log('else launched')
+            return res.status(200).json(trueAction[0])
+        }
     })
     .catch(err => {
         res.status(500).json({message: `Something went wrong!: ${err}`})

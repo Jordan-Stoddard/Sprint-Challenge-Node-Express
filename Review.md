@@ -11,7 +11,7 @@ Express is a minimalist web framework for Node.js. It basically makes it easier 
 We learned how to use express.Router() to organize our API. We learned how to use express.json() to parse incoming requests with JSON payloads. 
 
 ## What is Middleware?
-A piece of middleware is a function that gets called prior to the response coming back from the database.
+A piece of middleware is a function that gets called prior to the response handler function.
 
 ## What is a Resource?
 A resource can be any concern in your back end, this includes middleware, data from the database, etc.
@@ -20,7 +20,7 @@ A resource can be any concern in your back end, this includes middleware, data f
 HTTP status updates. 
 
 ## How can we partition our application into sub-applications?
-Using express.Router()
+Using express.Router() + module.exports
 
 ## What is express.json() and why do we need it?
 Express.json() is a built-in middleware in express, it parses incoming requests that have JSON on the request body. This makes our life easier so we don't have to worry about how to interact with the body parser.
